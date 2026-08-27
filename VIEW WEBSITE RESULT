@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foundry Digital — Websites, built to spec</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+
+:root{
+  --ink:#131318; --ink-2:#1b1b22; --paper:#f3f1ea; --paper-dim:#c9c6ba;
+  --orange:#ff5a1f; --orange-dim:#a63e17; --steel:#7a7c86; --line:#2b2b34; --radius:2px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--ink);color:var(--paper);font-family:'Inter',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.02em;line-height:1.05;}
+.mono{font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:0.72rem;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+/* navbar */
+header.site{position:sticky;top:0;z-index:50;background:rgba(19,19,24,0.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px;}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.15rem;}
+.logo .mark{width:26px;height:26px;border:2px solid var(--orange);border-radius:50%;position:relative;flex:none;}
+.logo .mark::after{content:'';position:absolute;inset:6px;background:var(--orange);border-radius:50%;}
+.navlinks{display:flex;gap:2.2rem;align-items:center;}
+.navlinks a{font-family:'IBM Plex Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--paper-dim);transition:color .15s ease;position:relative;padding:4px 0;}
+.navlinks a:hover,.navlinks a.active{color:var(--paper);}
+.navlinks a.active::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--orange);}
+.navlinks a.cta{border:1px solid var(--paper-dim);padding:9px 16px;border-radius:var(--radius);color:var(--paper);}
+.navlinks a.cta:hover{border-color:var(--orange);color:var(--orange);}
+.navtoggle{display:none;background:none;border:0;color:var(--paper);font-size:1.5rem;cursor:pointer;}
+@media (max-width:820px){
+  .navlinks{position:fixed;top:76px;left:0;right:0;bottom:0;background:var(--ink);flex-direction:column;align-items:flex-start;padding:32px;gap:1.6rem;transform:translateX(100%);transition:transform .25s ease;}
+  .navlinks.open{transform:translateX(0);}
+  .navtoggle{display:block;}
+}
+
+/* hero */
+.hero{position:relative;padding:110px 0 90px;overflow:hidden;border-bottom:1px solid var(--line);}
+.blueprint{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:0.35;mask-image:radial-gradient(ellipse 70% 60% at 60% 30%,black 40%,transparent 90%);}
+.hero .wrap{position:relative;}
+.eyebrow{color:var(--orange);margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--orange);}
+.hero h1{font-size:clamp(2.4rem,5.4vw,4.6rem);max-width:16ch;margin-bottom:26px;}
+.hero h1 span{color:var(--orange);}
+.hero p.lead{color:var(--paper-dim);font-size:1.15rem;max-width:46ch;margin-bottom:38px;}
+.btnrow{display:flex;gap:16px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:var(--radius);font-family:'IBM Plex Mono',monospace;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.08em;transition:all .15s ease;cursor:pointer;border:none;}
+.btn.primary{background:var(--orange);color:var(--ink);}
+.btn.primary:hover{background:#ff7440;}
+.btn.ghost{border:1px solid var(--line);color:var(--paper);background:none;}
+.btn.ghost:hover{border-color:var(--paper-dim);}
+
+section{padding:96px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:52px;flex-wrap:wrap;}
+.section-head .mono{color:var(--orange);margin-bottom:12px;display:block;}
+.section-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);max-width:20ch;}
+.section-head p{color:var(--paper-dim);max-width:38ch;}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+@media (max-width:900px){.grid3{grid-template-columns:1fr;} .grid2{grid-template-columns:1fr;}}
+.card{background:var(--ink-2);padding:38px 32px;}
+.card .num{font-family:'IBM Plex Mono',monospace;color:var(--orange-dim);font-size:0.8rem;margin-bottom:22px;display:block;}
+.card h3{font-size:1.25rem;margin-bottom:12px;}
+.card p{color:var(--paper-dim);font-size:0.96rem;}
+
+.stats{display:flex;border:1px solid var(--line);}
+.stat{flex:1;padding:32px;border-right:1px solid var(--line);}
+.stat:last-child{border-right:none;}
+.stat .n{font-family:'Space Grotesk';font-size:2.4rem;color:var(--orange);}
+.stat .l{color:var(--paper-dim);font-size:0.85rem;margin-top:6px;}
+@media (max-width:700px){.stats{flex-direction:column;} .stat{border-right:none;border-bottom:1px solid var(--line);} .stat:last-child{border-bottom:none;}}
+
+.worklist{display:flex;flex-direction:column;}
+.workrow{display:grid;grid-template-columns:100px 1.4fr 1fr;align-items:center;gap:24px;padding:28px 0;border-top:1px solid var(--line);}
+.worklist .workrow:last-child{border-bottom:1px solid var(--line);}
+.workrow .idx{font-family:'IBM Plex Mono';color:var(--steel);font-size:0.85rem;}
+.workrow h3{font-size:1.3rem;}
+.workrow .tag{color:var(--paper-dim);font-size:0.9rem;}
+@media (max-width:700px){.workrow{grid-template-columns:1fr;gap:8px;} .idx{display:none;}}
+
+.process{}
+.step{display:grid;grid-template-columns:80px 1fr;gap:24px;padding:30px 0;border-top:1px solid var(--line);}
+.step:last-child{border-bottom:1px solid var(--line);}
+.step .idx{font-family:'IBM Plex Mono';color:var(--orange);font-size:1rem;}
+.step h3{margin-bottom:8px;font-size:1.2rem;}
+.step p{color:var(--paper-dim);}
+
+.form{max-width:640px;}
+.field{margin-bottom:22px;}
+.field label{display:block;font-family:'IBM Plex Mono';font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--paper-dim);margin-bottom:8px;}
+.field input,.field textarea,.field select{width:100%;background:var(--ink-2);border:1px solid var(--line);color:var(--paper);padding:14px 16px;font-family:'Inter';font-size:0.95rem;border-radius:var(--radius);}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--orange);}
+.field textarea{resize:vertical;min-height:120px;}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--orange);outline-offset:2px;}
+
+footer{padding:56px 0;}
+.footgrid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px;}
+footer .cols{display:flex;gap:60px;flex-wrap:wrap;}
+footer .col h4{font-family:'IBM Plex Mono';font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--steel);margin-bottom:14px;}
+footer .col a{display:block;color:var(--paper-dim);font-size:0.92rem;margin-bottom:10px;}
+footer .col a:hover{color:var(--orange);}
+.footbottom{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--steel);font-size:0.82rem;flex-wrap:wrap;gap:12px;}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a href="#home" class="logo"><span class="mark"></span>Foundry Digital</a>
+    <nav class="navlinks" id="navlinks">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="cta">Start a project</a>
+    </nav>
+    <button class="navtoggle" aria-label="Toggle menu">☰</button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="blueprint" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow mono">Web design & development studio</p>
+    <h1>We build websites <span>that hold their shape.</span></h1>
+    <p class="lead">Foundry Digital designs and builds sites for businesses that are done patching together templates. Every project is cast from your content, your customers, and your goals — then shipped fast and built to last.</p>
+    <div class="btnrow">
+      <a href="#contact" class="btn primary">Start a project →</a>
+      <a href="#work" class="btn ghost">See the work</a>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="mono">What we do</span><h2>One studio, the full build.</h2></div>
+      <p>From first sketch to launch day, and every update after — no handoffs, no subcontractors.</p>
+    </div>
+    <div class="grid3">
+      <div class="card"><span class="num">01</span><h3>Design</h3><p>A visual identity and layout system built for your business specifically — not a reskinned template.</p></div>
+      <div class="card"><span class="num">02</span><h3>Development</h3><p>Fast, accessible, hand-built sites — from a five-page brochure site to a full e-commerce build.</p></div>
+      <div class="card"><span class="num">03</span><h3>Care & growth</h3><p>Hosting, updates, and ongoing changes after launch, so the site keeps working as your business does.</p></div>
+      <div class="card"><span class="num">04</span><h3>Redesigns</h3><p>Outdated or slow sites rebuilt on modern foundations, without losing what already works.</p></div>
+      <div class="card"><span class="num">05</span><h3>E-commerce</h3><p>Product catalogs, checkout, and inventory-ready storefronts for businesses selling online.</p></div>
+      <div class="card"><span class="num">06</span><h3>Ongoing care</h3><p>Hosting, security updates, and content edits — on a monthly retainer.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><div class="n">60+</div><div class="l mono">Sites shipped</div></div>
+      <div class="stat"><div class="n">14</div><div class="l mono">Days, avg. build time</div></div>
+      <div class="stat"><div class="n">96</div><div class="l mono">Avg. Lighthouse score</div></div>
+      <div class="stat"><div class="n">5</div><div class="l mono">Studio team members</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="mono">Selected work</span><h2>A few things we've built.</h2></div>
+      <p>A look at recent builds across restaurants, retail, legal, and creative clients.</p>
+    </div>
+    <div class="worklist">
+      <div class="workrow"><span class="idx">01</span><h3>Marrow & Co.</h3><span class="tag">Restaurant · booking site</span></div>
+      <div class="workrow"><span class="idx">02</span><h3>Halden Supply</h3><span class="tag">B2B · e-commerce</span></div>
+      <div class="workrow"><span class="idx">03</span><h3>Coast Legal Group</h3><span class="tag">Professional services</span></div>
+      <div class="workrow"><span class="idx">04</span><h3>Field & Fern</h3><span class="tag">Landscaping · brochure site</span></div>
+      <div class="workrow"><span class="idx">05</span><h3>Northline Studio</h3><span class="tag">Photography · portfolio</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="mono">The Foundry Hands</span><h2>Meet the team.</h2></div>
+    </div>
+    <div class="grid3">
+      <div class="card"><span class="num">—</span><h3>Jaskirat Singh</h3><p>Founder & Project Manager</p></div>
+      <div class="card"><span class="num">—</span><h3>Amandeep Singh</h3><p>Developer</p></div>
+      <div class="card"><span class="num">—</span><h3>Jaskirat Singh</h3><p>Developer</p></div>
+      <div class="card"><span class="num">—</span><h3>Vicky Kumar</h3><p>Developer</p></div>
+      <div class="card"><span class="num">—</span><h3>Amar Saxena</h3><p>Developer</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="mono">How a project runs</span><h2>From first call to launch day.</h2></div>
+    </div>
+    <div class="process">
+      <div class="step"><span class="idx">01</span><div><h3>Discovery call</h3><p>A short conversation about your business, your customers, and what the site needs to do for you.</p></div></div>
+      <div class="step"><span class="idx">02</span><div><h3>Proposal & quote</h3><p>A fixed-price proposal covering scope, pages, and timeline.</p></div></div>
+      <div class="step"><span class="idx">03</span><div><h3>Design</h3><p>A first look at layout and visual direction before any code is written.</p></div></div>
+      <div class="step"><span class="idx">04</span><div><h3>Build</h3><p>The site is built page by page, with a staging link to follow along.</p></div></div>
+      <div class="step"><span class="idx">05</span><div><h3>Launch & handoff</h3><p>We move the site live and stay on for support after.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="mono">Get in touch</span><h2>Tell us about the project.</h2></div>
+    </div>
+    <div class="grid2" style="align-items:start;">
+      <div class="card">
+        <form class="form" id="contactForm">
+          <div class="field"><label for="name">Name</label><input type="text" id="name" required></div>
+          <div class="field"><label for="email">Email</label><input type="email" id="email" required></div>
+          <div class="field"><label for="phone">Phone (optional)</label><input type="tel" id="phone"></div>
+          <div class="field"><label for="proj">Project type</label>
+            <select id="proj"><option>New website</option><option>Redesign / rebuild</option><option>E-commerce</option><option>Ongoing care</option><option>Not sure yet</option></select>
+          </div>
+          <div class="field"><label for="msg">Message</label><textarea id="msg" required></textarea></div>
+          <button type="submit" class="btn primary">Send message →</button>
+          <p class="mono" id="formMsg" style="margin-top:16px;color:var(--orange);"></p>
+        </form>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:18px;">Direct contact</h3>
+        <div class="field"><label>Email</label><p><a href="mailto:js9024866@gmail.com">js9024866@gmail.com</a></p></div>
+        <div class="field"><label>Phone</label><p><a href="tel:+918929747550">+91 89297 47550</a></p></div>
+        <div class="field"><label>Location</label><p>17/176 Subhash Nagar, New Delhi</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footgrid">
+      <div>
+        <a href="#home" class="logo"><span class="mark"></span>Foundry Digital</a>
+        <p class="mono" style="margin-top:14px;">Websites, built to spec.</p>
+        <p style="margin-top:16px;color:var(--paper-dim);font-size:0.88rem;">17/176 Subhash Nagar, New Delhi<br><a href="mailto:js9024866@gmail.com">js9024866@gmail.com</a><br><a href="tel:+918929747550">+91 89297 47550</a></p>
+      </div>
+      <div class="cols">
+        <div class="col"><h4>Studio</h4><a href="#services">Services</a><a href="#work">Work</a><a href="#about">About</a></div>
+        <div class="col"><h4>Contact</h4><a href="#contact">Start a project</a></div>
+      </div>
+    </div>
+    <div class="footbottom">
+      <span>© 2026 Foundry Digital.</span>
+      <span class="mono">Built on Foundry, naturally.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.querySelector('.navtoggle');
+  const links = document.getElementById('navlinks');
+  toggle.addEventListener('click', () => {
+    links.classList.toggle('open');
+    toggle.textContent = links.classList.contains('open') ? '✕' : '☰';
+  });
+  const navAnchors = links.querySelectorAll('a');
+  navAnchors.forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.textContent = '☰';
+  }));
+
+  const sections = document.querySelectorAll('section[id]');
+  const setActive = () => {
+    let current = sections[0].id;
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+    });
+    navAnchors.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  };
+  window.addEventListener('scroll', setActive);
+  setActive();
+
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    document.getElementById('formMsg').textContent = 'Thanks — we\'ll be in touch shortly.';
+  });
+});
+</script>
+</body>
+</html>
