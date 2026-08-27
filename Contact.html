@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Foundry Digital</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a href="index.html" class="logo"><span class="mark"></span>Foundry Digital</a>
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="cta active">Start a project</a>
+    </nav>
+    <button class="navtoggle" aria-label="Toggle menu">☰</button>
+  </div>
+</header>
+
+<section class="pagehead">
+  <div class="wrap">
+    <span class="mono">Get in touch</span>
+    <h1>Tell us about the project.</h1>
+    <p>Fill in a few details and we'll follow up with next steps. This form is a placeholder — see the note below on connecting it to receive real submissions.</p>
+  </div>
+</section>
+
+<section style="border-bottom:none;">
+  <div class="wrap">
+    <div class="grid2" style="align-items:start;">
+      <div class="card" style="border-right:1px solid var(--line);">
+        <form class="form contact-form">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          <div class="field">
+            <label for="project">Project type</label>
+            <select id="project" name="project">
+              <option>New website</option>
+              <option>Redesign / rebuild</option>
+              <option>E-commerce</option>
+              <option>Ongoing care & updates</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="message">Tell us about the project</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn primary" style="border:none;cursor:pointer;">Send message →</button>
+          <p class="form-msg mono" style="margin-top:16px;color:var(--orange);"></p>
+        </form>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:18px;">Direct contact</h3>
+        <p style="color:var(--paper-dim);margin-bottom:26px;">Add your studio's real contact details here — email, phone, location, and business hours.</p>
+        <div class="field"><label>Email</label><p><a href="mailto:js9024866@gmail.com">js9024866@gmail.com</a></p></div>
+        <div class="field"><label>Phone</label><p><a href="tel:+918929747550">+91 89297 47550</a></p></div>
+        <div class="field"><label>Location</label><p>17/176 Subhash Nagar, New Delhi</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footgrid">
+      <div>
+        <a href="index.html" class="logo"><span class="mark"></span>Foundry Digital</a>
+        <p class="mono" style="margin-top:14px;">Websites, built to spec.</p>
+        <p style="margin-top:16px;color:var(--paper-dim);font-size:0.88rem;">17/176 Subhash Nagar, New Delhi<br><a href="mailto:js9024866@gmail.com">js9024866@gmail.com</a><br><a href="tel:+918929747550">+91 89297 47550</a></p>
+      </div>
+      <div class="cols">
+        <div class="col">
+          <h4>Studio</h4>
+          <a href="services.html">Services</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+        </div>
+        <div class="col">
+          <h4>Contact</h4>
+          <a href="contact.html">Start a project</a>
+        </div>
+      </div>
+    </div>
+    <div class="footbottom">
+      <span>© 2026 Foundry Digital.</span>
+      <span class="mono">Built on Foundry, naturally.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
